@@ -18,6 +18,7 @@ public class FlexibleGridLayout : LayoutGroup
         FixedColumns
     }
 
+    [EnumToggleButtons]
     public FitType fitType = FitType.Uniform;
 
     [Min(1), ShowIf("@fitType == FitType.FixedRows")]
@@ -165,4 +166,26 @@ public class FlexibleGridLayout : LayoutGroup
     {
 
     }
+
+#if UNITY_EDITOR
+    [TitleGroup("EZ Setup", "layout", alignment: TitleAlignments.Split), Button("Horizontal Layout")]
+    private void __debug_EzSetup_Layout_Horizontal()
+    {
+        fitType = FitType.FixedRows;
+        Rows = 1;
+        Spacing = new Vector2(Spacing.x, 0);
+        FitX = FitY = false;
+        CalculateLayoutInputHorizontal();
+    }
+
+    [TitleGroup("EZ Setup", "layout", alignment: TitleAlignments.Split), Button("Vertical Layout")]
+    private void __debug_EzSetup_Layout_Vertical()
+    {
+        fitType = FitType.FixedColumns;
+        Columns = 1;
+        Spacing = new Vector2(0, Spacing.y);
+        FitX = FitY = false;
+        CalculateLayoutInputHorizontal();
+    }
+#endif
 }
