@@ -143,8 +143,13 @@ public class FlexibleGridLayout : LayoutGroup
 
             SetChildAlongAxis(_child, 0, _xPos, CellSize.x);
             SetChildAlongAxis(_child, 1, _yPos, CellSize.y);
-
         }
+        SetLayoutInputForAxis(
+                padding.horizontal + (CellSize.x + Spacing.x) * Columns - Spacing.x,
+                padding.horizontal + (CellSize.x + Spacing.x) * Columns - Spacing.x,
+                -1, 0);
+        float minSpace = padding.vertical + (CellSize.y + Spacing.y) * Rows - Spacing.y;
+        SetLayoutInputForAxis(minSpace, minSpace, -1, 1);
     }
 
     public override void CalculateLayoutInputVertical()
