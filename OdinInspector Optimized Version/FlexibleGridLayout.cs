@@ -26,8 +26,12 @@ public class FlexibleGridLayout : LayoutGroup
     [Min(1), ShowIf("@fitType == FitType.FixedColumns")]
     public int Columns;
 
-    [DisableIf("@fitType == FitType.Uniform"), InfoBox("The value(x,y) should never equal to 0.", InfoMessageType.Error, "@CellSize.x == 0 || CellSize.y == 0")]
+    [DisableIf("@fitType == FitType.Uniform"),
+        InfoBox("Axis X should never equal to 0.", InfoMessageType.Warning, "@CellSize.x == 0"),
+        InfoBox("Axis Y should never equal to 0.", InfoMessageType.Warning, "@CellSize.y == 0")]
     public Vector2 CellSize = new Vector2(500, 500);
+    [InfoBox("Axis X will not be used.", InfoMessageType.Info, "@Columns == 1 && Spacing.x != 0"),
+        InfoBox("Axis Y will not be used.", InfoMessageType.Info, "@Rows == 1 && Spacing.y != 0")]
     public Vector2 Spacing;
 
     [TitleGroup("Fit"), LabelText("Width"), EnableIf("@fitType == FitType.FixedRows || fitType == FitType.FixedColumns")]
