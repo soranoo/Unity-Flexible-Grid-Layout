@@ -26,7 +26,7 @@ public class FlexibleGridLayout : LayoutGroup
     [Min(1), ShowIf("@fitType == FitType.FixedColumns")]
     public int Columns;
 
-    [DisableIf("@fitType == FitType.Uniform")]
+    [DisableIf("@fitType == FitType.Uniform"), InfoBox("The value(x,y) should never equal to 0.", InfoMessageType.Error, "@CellSize.x == 0 || CellSize.y == 0")]
     public Vector2 CellSize = new Vector2(500, 500);
     public Vector2 Spacing;
 
@@ -148,8 +148,13 @@ public class FlexibleGridLayout : LayoutGroup
 
             SetChildAlongAxis(_child, 0, _xPos, CellSize.x);
             SetChildAlongAxis(_child, 1, _yPos, CellSize.y);
-
         }
+        SetLayoutInputForAxis(
+                padding.horizontal + (CellSize.x + Spacing.x) * Columns - Spacing.x,
+                padding.horizontal + (CellSize.x + Spacing.x) * Columns - Spacing.x,
+                -1, 0);
+        float minSpace = padding.vertical + (CellSize.y + Spacing.y) * Rows - Spacing.y;
+        SetLayoutInputForAxis(minSpace, minSpace, -1, 1);
     }
 
     public override void CalculateLayoutInputVertical()
