@@ -26,7 +26,7 @@ public class FlexibleGridLayout : LayoutGroup
     [Min(1), ShowIf("@fitType == FitType.FixedColumns")]
     public int Columns;
 
-    [DisableIf("@fitType == FitType.Uniform"),
+    [DisableIf("@fitType == FitType.Uniform"), MinValue(float.MinValue),
         InfoBox("Axis X should never equal to 0.", InfoMessageType.Warning, "@CellSize.x == 0"),
         InfoBox("Axis Y should never equal to 0.", InfoMessageType.Warning, "@CellSize.y == 0")]
     public Vector2 CellSize = new Vector2(500, 500);
