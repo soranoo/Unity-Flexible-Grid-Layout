@@ -8,7 +8,15 @@ A replacement of `Grid Layout Group`. Inspired by `Game Dev Guide`'s [tutorial](
 
 Reference: [IkeThermite/GameDevGuide-CustomTabsAndFlexibleGrid](https://github.com/soranoo/GameDevGuide-CustomTabsAndFlexibleGrid/blob/master/Custom%20Tabs%20and%20Flexible%20Grid/Assets/Scripts/FlexibleGridLayout.cs)
 
-### 🔴🚧🔴🚧🔴Under Construction🔴🚧🔴🚧🔴
+(Normal)
+![alt text](/docs/imgs/normal-demo.png)
+
+(OdinInspector Optimized Version)
+![alt text](/docs/imgs/odinInspector-optimized-demo.png)
+
+
+## Development Environment
+* Unity Editor 2020.3.26f1
 
 ## TODO
 * N/A
